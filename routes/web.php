@@ -16,14 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    // dd($request);
-    // dd(request());
-    return view('test');
-});
+// Route::get('/', function () {
+//     // dd($request);
+//     // dd(request());
+//     return view('test');
+// });
 
 // All listings
-Route::get('/listings', function(){
+Route::get('/', function(){
     // $var = 'test var';
     $listings = Listing::all(); // select * from listings
     // $users = User::all();
