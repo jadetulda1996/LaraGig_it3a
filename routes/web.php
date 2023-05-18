@@ -32,14 +32,14 @@ Route::get('/', function(){
 });
 
 // Single Listing
-Route::get('/listings/{id}', function($id) {
+Route::get('/listings/{listing}', function(Listing $listing) {
 
-    $listing = Listing::find($id); // select * from listings where id = $id
+    // $listing = Listing::find($id); // select * from listings where id = $id
 
-    // dd($listing);
+    // // dd($listing);
 
-    if(!$listing)
-        abort(404);
+    // if(!$listing)
+    //     abort(404);
 
     return view('listing', compact(['listing']));
 });
