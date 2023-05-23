@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ListingController;
 use App\Models\Listing;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,27 +23,20 @@ use Illuminate\Support\Facades\Route;
 //     return view('test');
 // });
 
-// All listings
-Route::get('/', function(){
-    // $var = 'test var';
-    $listings = Listing::all(); // select * from listings
-    // $users = User::all();
+// Index
+Route::get('/', [ListingController::class, 'index']);
 
-    return view('listings', compact(['listings']));
-});
+Route::get('/listings/create', [ListingController::class, 'create']);
 
-// Single Listing
-Route::get('/listings/{listing}', function(Listing $listing) {
+Route::post('/listings', [ListingController::class, 'store']);
 
-    // $listing = Listing::find($id); // select * from listings where id = $id
+Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
 
-    // // dd($listing);
+Route::put('/listings/{listing}', [ListingController::class, 'update']);
 
-    // if(!$listing)
-    //     abort(404);
+// Show
+Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
-    return view('listing', compact(['listing']));
-});
 
 // Route::get('/users/{id}', function ($id) {
 //     return $id;
