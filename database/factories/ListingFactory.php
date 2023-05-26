@@ -17,7 +17,9 @@ class ListingFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->jobTitle(), //fake()->jobTitle()
+            'user_id' => fake()->randomElement([1, 2, 3, 4, 5]),
+            'title' => $this->faker->jobTitle(),
+            //fake()->jobTitle()
             'tags' => 'laravel,vue,backend',
             'company' => $this->faker->company(),
             'location' => $this->faker->address(),

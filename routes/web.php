@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ListingController;
 use App\Models\Listing;
+use App\Models\Phone;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,23 @@ Route::put('/listings/{listing}', [ListingController::class, 'update']);
 // Show
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
+
+Route::get('/phones', function () {
+    $users = User::with('phone')->find(3);
+    // $users = User::with('phone')->where('user_id', 3)->get();
+
+    // $posts = Phone::with('user')->get();
+
+    return response()->json($users);
+});
+
+Route::get('/users/{user}/posts', function (User $user) {
+    // $users = User::with('listings')->withCount('listings')->find(1);
+    $user->load('listings')->loadCount('listings')->get();
+    // $listings = Listing::with('user')->get();
+
+    return response()->json($user);
+});
 
 // Route::get('/users/{id}', function ($id) {
 //     return $id;
